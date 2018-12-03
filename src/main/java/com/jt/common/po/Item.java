@@ -1,4 +1,10 @@
 package com.jt.common.po;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * 为了实现跨系统调用调用对象的一致, 采用第三方的方式
  * 定义pojo对象
@@ -6,8 +12,11 @@ package com.jt.common.po;
  * @author Administrator
  *
  */
-public class Item extends BasePojo{
 
+@Table(name="tb_item") //对应数据库的表名
+public class Item extends BasePojo{
+    @Id //定义主键 
+    @GeneratedValue(strategy=GenerationType.IDENTITY) //定义主键自增
 	private Integer id; // 商品ID
 	private String title; // 商品标题
 	private String sellPoint; //商品卖点
