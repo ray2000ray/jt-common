@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Item extends BasePojo{
     @Id //定义主键 
     @GeneratedValue(strategy=GenerationType.IDENTITY) //定义主键自增
-	private Integer id; // 商品ID
+	private Long id; // 商品ID
 	private String title; // 商品标题
 	private String sellPoint; //商品卖点
 	private Long price; //商品价格
@@ -26,10 +26,10 @@ public class Item extends BasePojo{
 	private String image;//商品图片
 	private Long cid; //商品分类
 	private Integer status; //商品状态码
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getTitle() {
