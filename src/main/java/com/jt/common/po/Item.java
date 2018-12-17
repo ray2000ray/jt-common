@@ -5,6 +5,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * 为了实现跨系统调用调用对象的一致, 采用第三方的方式
  * 定义pojo对象
@@ -14,6 +16,7 @@ import javax.persistence.Table;
  */
 
 @Table(name="tb_item") //对应数据库的表名
+@JsonIgnoreProperties(ignoreUnknown=true)//忽略位置属性 json转化时使用
 public class Item extends BasePojo{
     @Id //定义主键 
     @GeneratedValue(strategy=GenerationType.IDENTITY) //定义主键自增
@@ -26,6 +29,13 @@ public class Item extends BasePojo{
 	private String image;//商品图片
 	private Long cid; //商品分类
 	private Integer status; //商品状态码
+	
+	//为了实现图片获取第一张 添加
+	public String[] getImages() {
+		return image.split(",");
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}
