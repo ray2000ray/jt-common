@@ -54,6 +54,7 @@ public class HttpClientService {
 			charset = "UTF-8";
 		}
 		// 1.定义连接时长
+		System.out.println("url--"+url);
 		HttpPost post = new HttpPost(url);
 		post.setConfig(requestConfig);
 
@@ -73,8 +74,9 @@ public class HttpClientService {
 		
 		//3.发起url请求
 		CloseableHttpResponse httpResponse = httpClient.execute(post);
-		
-		if (httpResponse.getStatusLine().getStatusCode() ==200) {
+		int code =httpResponse.getStatusLine().getStatusCode();
+		System.out.println("code:"+code);
+		if (code ==200) {
 			result = EntityUtils.toString(httpResponse.getEntity());
 		}
 
